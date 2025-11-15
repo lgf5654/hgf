@@ -1,0 +1,221 @@
+{
+    "domains": [
+        {
+            "name": "MyPrivateSub_Placeholder",
+            "sub": [
+                "https://gist.githubusercontent.com/maganghh/efd1ca6f99fde129fc8a637a796a55bd/raw/clash.yaml"
+            ],
+            "domain": "gist.githubusercontent.com",
+            "enable": true,
+            "rename": "",
+            "include": "",
+            "exclude": "",
+            "push_to": [
+                "MyProxies"
+            ],
+            "ignorede": true,
+            "liveness": true,
+            "rate": 2.5,
+            "count": 1,
+            "coupon": "",
+            "secure": false,
+            "renew": {
+                "account": [
+                    {
+                        "email": "",
+                        "passwd": "",
+                        "ticket": {
+                            "enable": true,
+                            "autoreset": false,
+                            "subject": "",
+                            "message": "",
+                            "level": 1
+                        }
+                    }
+                ],
+                "plan_id": 3,
+                "package": "",
+                "method": 1,
+                "coupon_code": "",
+                "chatgpt": {
+                    "enable": true,
+                    "regex": "",
+                    "operate": "IN"
+                }
+            }
+        }
+    ],
+    "crawl": {
+        "enable": true,
+        "exclude": "过期|停用|维护",
+        "threshold": 5,
+        "singlelink": true,
+        "persist": {
+            "subs": "crawledsubs",
+            "proxies": "crawledproxies"
+        },
+        "config": {
+            "rename": "",
+            "include": "",
+            "exclude": "",
+            "xxxxxxx": ""
+        },
+        "airport_discovery": {
+            "enable": true,
+            "channel": "jichang_list",
+            "pages": 15,
+            "rigid": true,
+            "chuck": false,
+            "push_to": [
+                "MyProxies"
+            ],
+            "persist": {
+                "domains": "discovered-airports.txt"
+            }
+        },
+        "telegram": {
+            "enable": false,
+            "pages": 15,
+            "exclude": "",
+            "users": {
+                "channel": {
+                    "include": "",
+                    "exclude": "",
+                    "config": {
+                        "rename": "",
+                        "xxxxxx": ""
+                    },
+                    "push_to": [ "MyProxies"]
+                }
+            }
+        },
+        "google": {
+            "enable": false,
+            "exclude": "",
+            "notinurl": [],
+            "push_to": []
+        },
+        "github": {
+            "enable": true,
+            "pages": 15,
+            "push_to": [
+                "MyProxies"
+            ],
+            "exclude": "",
+            "spams": []
+        },
+        "twitter": {
+            "enable": false,
+            "users": {
+                "username": {
+                    "enable": true,
+                    "num": 30,
+                    "include": "",
+                    "exclude": "",
+                    "config": {
+                        "rename": "",
+                        "xxxxxx": ""
+                    },
+                    "push_to": []
+                }
+            }
+        },
+        "repositories": [
+            {
+                "enable": false,
+                "username": "",
+                "repo_name": "",
+                "commits": 3,
+                "exclude": "",
+                "push_to": []
+            }
+        ],
+        "pages": [
+            {
+                "enable": true,
+                "url": "",
+                "include": "",
+                "exclude": "",
+                "config": {
+                    "rename": ""
+                },
+                "push_to": [
+                "MyProxies"
+            ]
+            }
+        ],
+        "scripts": [
+            {
+                "enable": false,
+                "script": "file#function",
+                "params": {
+                    "persist": {
+                        "fileid": ""
+                    },
+                    "any": "xxx",
+                    "config": {
+                        "enable": true,
+                        "liveness": true,
+                        "exclude": "",
+                        "rename": "",
+                        "push_to": []
+                    }
+                }
+            }
+        ]
+    },
+    "groups": {
+        "MyProxies": {
+            "emoji": true,
+            "list": true,
+            "targets": {
+                "clash": "MyClashProfile",
+                "singbox": "MySingboxProfile",
+                "v2ray": "MyV2rayProfile"
+            },
+            "regularize": {
+                "enable": true,
+                "locate": true,
+                "bits": 2
+            }
+        }
+    },
+    "storage": {
+        "engine": "gist",
+        "token": "",
+        "base": "https://api.github.com",
+        "domain": "https://gist.github.com",
+        "items": {
+            "MyClashProfile": {
+                "username": "lgf5654",
+                "gistid": "5a5ec5bb1a521c53f44b796e8934c0b4",
+                "filename": "clash.yaml"
+            },
+            "MySingboxProfile": {
+                "username": "lgf5654",
+                "gistid": "5a5ec5bb1a521c53f44b796e8934c0b4",
+                "filename": "singbox.json"
+            },
+            "MyV2rayProfile": {
+                "username": "lgf5654",
+                "gistid": "5a5ec5bb1a521c53f44b796e8934c0b4",
+                "filename": "v2ray.txt"
+            },
+            "crawledsubs": {
+                "username": "lgf5654",
+                "gistid": "5a5ec5bb1a521c53f44b796e8934c0b4",
+                "filename": "crawled-subs.txt"
+            },
+            "crawledproxies": {
+                "username": "lgf5654",
+                "gistid": "5a5ec5bb1a521c53f44b796e8934c0b4",
+                "filename": "crawled-proxies.yaml"
+            },
+            "discovered-airports.txt": {
+                "username": "lgf5654",
+                "gistid": "5a5ec5bb1a521c53f44b796e8934c0b4",
+                "filename": "discovered-airports.txt"
+            }
+        }
+    }
+}
