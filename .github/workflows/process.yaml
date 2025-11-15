@@ -1,8 +1,7 @@
 name: Process
 on:
   schedule:
-    - cron: "05 03 * * *"
-    - cron: "05 11 * * *"
+    - cron: "0 */7 * * *"
   workflow_dispatch:
 
 env:
@@ -12,8 +11,19 @@ env:
   # network proxy aggregate config
   SUBSCRIBE_CONF: ${{ secrets.SUBSCRIBE_CONF }}
 
-  # token
-  PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+  # token (推荐复用同一个 GIST_PAT)
+  GIST_PAT: ${{ secrets.GIST_PAT }}
+  PUSH_TOKEN: ${{ secrets.GIST_PAT }}
+  GH_TOKEN: ${{ secrets.GIST_PAT }}
+
+  # Gist 链接 (格式: 用户名/GistID)
+  GIST_LINK: ${{ vars.GIST_LINK }}
+
+  # GitHub Cookie（从浏览器复制）
+  GH_COOKIE: ${{ secrets.GH_COOKIE }}
+
+  # optional: 自定义订阅 url
+  CUSTOMIZE_LINK: ${{ vars.CUSTOMIZE_LINK }}
 
   # network reachable
   REACHABLE: ${{ vars.REACHABLE }}
@@ -27,8 +37,9 @@ env:
   # workflow mode
   WORKFLOW_MODE: ${{ vars.WORKFLOW_MODE }}
 
-  # include spwcial protocols, such vless hysteria2 and hysteria
+  # include special protocols (vless / hysteria2 / hysteria)
   ENABLE_SPECIAL_PROTOCOLS: ${{ vars.ENABLE_SPECIAL_PROTOCOLS }}
+
 
 jobs:
   process:
@@ -51,7 +62,7 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Process
-        run: python -u subscribe/process.py --overwrite
+        run: python -u subscribe/process.py -s subscribe/config/config.json -n 32 -t 10000 -f
 
       - name: Timestamp
         run: date
