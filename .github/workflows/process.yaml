@@ -62,7 +62,7 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Process
-        run: python -u subscribe/process.py -s subscribe/config/config.json -n 32 -t 10000 -f
+        run: python -u subscribe/process.py -s subscribe/config/config.json -n 64 -t 10000 -f -u http://www.apple.com/library/test/success.html
 
       - name: Timestamp
         run: date
