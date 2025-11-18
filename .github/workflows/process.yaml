@@ -1,67 +1,61 @@
 name: Process
+
 on:
   schedule:
-    - cron: "0 */7 * * *"
+    # 建议改为每 6 小时一次，时间更固定 (0, 6, 12, 18)
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
+# 确保同一时间只有一个工作流在运行，如果有新的触发，取消正在运行的旧任务
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
-  # time zone
   TZ: Asia/Shanghai
-
-  # network proxy aggregate config
   SUBSCRIBE_CONF: ${{ secrets.SUBSCRIBE_CONF }}
-
-  # token (推荐复用同一个 GIST_PAT)
+  # 整合 Token，通常只需要一个有效 PAT 即可
   GIST_PAT: ${{ secrets.GIST_PAT }}
   PUSH_TOKEN: ${{ secrets.GIST_PAT }}
   GH_TOKEN: ${{ secrets.GIST_PAT }}
-
-  # Gist 链接 (格式: 用户名/GistID)
   GIST_LINK: ${{ vars.GIST_LINK }}
-
-  # GitHub Cookie（从浏览器复制）
   GH_COOKIE: ${{ secrets.GH_COOKIE }}
-
-  # optional: 自定义订阅 url
   CUSTOMIZE_LINK: ${{ vars.CUSTOMIZE_LINK }}
-
-  # network reachable
   REACHABLE: ${{ vars.REACHABLE }}
-
-  # not check connective
   SKIP_ALIVE_CHECK: ${{ vars.SKIP_ALIVE_CHECK }}
-
-  # skip remark
   SKIP_REMARK: ${{ vars.SKIP_REMARK }}
-
-  # workflow mode
   WORKFLOW_MODE: ${{ vars.WORKFLOW_MODE }}
-
-  # include special protocols (vless / hysteria2 / hysteria)
   ENABLE_SPECIAL_PROTOCOLS: ${{ vars.ENABLE_SPECIAL_PROTOCOLS }}
-
 
 jobs:
   process:
     runs-on: ubuntu-latest
+    # 设置超时防止卡死，例如 30 分钟
+    timeout-minutes: 30
+    
+    # 安全最佳实践：默认只读权限
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: main
+        # 移除了 ref: main，使其更通用
 
       - name: Prepare
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
           architecture: "x64"
+          # 启用缓存，加快安装速度
           cache: "pip"
 
-      - name: Install
+      - name: Install Dependencies
         run: pip3 install -r requirements.txt
 
-      - name: Process
+      - name: Process Subscriptions
+        # 建议将硬编码的参数也提取到 env 或 vars 中，这里保留原样但增加了说明
+        # -u 保持 python 输出不缓存，利于查看实时日志
         run: python -u subscribe/process.py -s subscribe/config/config.json -n 64 -t 10000 -f -u http://www.apple.com/library/test/success.html
 
       - name: Timestamp
