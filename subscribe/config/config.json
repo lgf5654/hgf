@@ -1,26 +1,22 @@
 {
-  "domains": [
-    {
-      "name": "MyPrivateSub_Placeholder",
-      "sub": [
-        "https://gist.githubusercontent.com/maganghh/efd1ca6f99fde129fc8a637a796a55bd/raw/clash.yaml"
+    "domains": [
+        {
+            "name": "MyPrivateSub_Placeholder",
+            "sub": ["https://gist.githubusercontent.com/maganghh/efd1ca6f99fde129fc8a637a796a55bd/raw/clash.yaml"],
+            "domain": "gist.githubusercontent.com",
+            "enable": true,
+            "rename": "",
+            "include": "",
+            "exclude": "",
+            "push_to": ["MyProxies"],
+            "ignorede": true,
+            "liveness": true,
+            "rate": 2.0,
+            "count": 3,
+            "coupon": "FREE2024",
+            "secure": false
+        }
       ],
-      "domain": "gist.githubusercontent.com",
-      "enable": true, 
-      "rename": "",
-      "include": "",
-      "exclude": "",
-      "push_to": [
-        "MyProxies"
-      ],
-      "ignorede": true, 
-      "liveness": true,
-      "rate": 2.5,
-      "count": 1,
-      "coupon": "",
-      "secure": false
-    }
-  ],
     "crawl": {
         "enable": true,
         "exclude": "过期|停用|维护",
