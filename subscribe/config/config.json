@@ -1,50 +1,26 @@
 {
-    "domains": [
-        {
-            "name": "MyPrivateSub_Placeholder",
-            "sub": [
-                "https://gist.githubusercontent.com/maganghh/efd1ca6f99fde129fc8a637a796a55bd/raw/clash.yaml"
-            ],
-            "domain": "gist.githubusercontent.com",
-            "enable": true,
-            "rename": "",
-            "include": "",
-            "exclude": "",
-            "push_to": [
-                "MyProxies"
-            ],
-            "ignorede": true,
-            "liveness": true,
-            "rate": 2.5,
-            "count": 1,
-            "coupon": "",
-            "secure": false,
-            "renew": {
-                "account": [
-                    {
-                        "email": "",
-                        "passwd": "",
-                        "ticket": {
-                            "enable": true,
-                            "autoreset": false,
-                            "subject": "",
-                            "message": "",
-                            "level": 1
-                        }
-                    }
-                ],
-                "plan_id": 3,
-                "package": "",
-                "method": 1,
-                "coupon_code": "",
-                "chatgpt": {
-                    "enable": true,
-                    "regex": "",
-                    "operate": "IN"
-                }
-            }
-        }
-    ],
+  "domains": [
+    {
+      "name": "MyPrivateSub_Placeholder",
+      "sub": [
+        "https://gist.githubusercontent.com/maganghh/efd1ca6f99fde129fc8a637a796a55bd/raw/clash.yaml"
+      ],
+      "domain": "gist.githubusercontent.com",
+      "enable": true, 
+      "rename": "",
+      "include": "",
+      "exclude": "",
+      "push_to": [
+        "MyProxies"
+      ],
+      "ignorede": true, 
+      "liveness": true,
+      "rate": 2.5,
+      "count": 1,
+      "coupon": "",
+      "secure": false
+    }
+  ],
     "crawl": {
         "enable": true,
         "exclude": "过期|停用|维护",
