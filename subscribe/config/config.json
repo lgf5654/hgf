@@ -11,9 +11,9 @@
             "push_to": ["MyProxies"],
             "ignorede": true,
             "liveness": true,
-            "rate": 2.0,
-            "count": 3,
-            "coupon": "FREE2024",
+            "rate": 2.5,
+            "count": 1,
+            "coupon": "",
             "secure": false
         }
       ],
