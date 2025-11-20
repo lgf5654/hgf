@@ -1574,7 +1574,7 @@ def collect_airport(
             for url in urls:
                 try:
                     content = utils.http_get(url=url)
-                    groups = re.findall(r"\[[^\]]+\]\((https?://[^)\s]+)\)", content, flags=re.I)
+                    groups = re.findall(r"\[.*\]\((https?:\/\/[^\s\r\n]+)\)[^\r\n]+\d+G.*", content, flags=re.I)
                 
                     if groups:
                         current_tasks = [utils.trim(x).lower() for x in groups if x]
